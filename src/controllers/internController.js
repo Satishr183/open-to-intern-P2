@@ -74,8 +74,8 @@ const createIntern = async function (req,res) {
 
 //---------------------creating Intern-----------------------------------------
         
-        let collegeDetails = await collegeModel.findOne({name:collegeName})
-        if (!collegeDetails || collegeDetails.isDeleted == true){
+        let collegeDetails = await collegeModel.findOne({name:collegeName, isDeleted : false})
+        if (!collegeDetails){
                 return res.status(400).send({staus : false, message : "collage not found"})
         }
         
